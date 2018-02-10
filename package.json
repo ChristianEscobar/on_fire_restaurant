@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/xtiane/on_fire_restaurant/issues"
   },
-  "homepage": "https://github.com/xtiane/on_fire_restaurant#readme"
+  "homepage": "https://github.com/xtiane/on_fire_restaurant#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2"
+  }
 }
