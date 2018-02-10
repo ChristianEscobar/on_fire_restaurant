@@ -3,7 +3,7 @@ module.exports = {
 
 	table(req,res){console.log("hit table");},
 
-	getReserve(req,res){console.log("hit reserve");}
+	getReserve(req,res){console.log("hit reserve");},
 	
 	postReserve(req,res){console.log("hit reserve");}
 
