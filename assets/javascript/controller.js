@@ -1,26 +1,14 @@
-const path = require("path");
-
+const getReserveapi = require("./getReserveapi");
+const postReserveapi = require("./postReserveapi");
 
 module.exports = {
-	home(req,res){
-		console.log("hit home");
-		var fileName = path.join(__dirname, "..", '..', "index.html");
-		console.log(fileName);
-		  res.sendFile(fileName, function (err) {
-		    if (err) {
-		      next(err);
-		    } else {
-		      console.log('Sent:', fileName);
-		    }
-		  });
-		  // next();
-	},
+	home(req,res){console.log("hit home");},
 
 	table(req,res){console.log("hit table");},
 
-	getReserve(req,res){console.log("hit reserve");},
+	getReserve(req,res){getReserveapi.getReservations(req, res);},
 	
-	postReserve(req,res){console.log("hit reserve");}
+	postReserve(req,res){postReserveapi.postReservations(req,res);}
 
 
 }
