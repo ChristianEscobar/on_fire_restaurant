@@ -70,6 +70,76 @@
 <!-- BELOW CODE IS CRITICAL. IT HANDLES HOW FORM DATA IS LOADED FROM OUR SERVER -->
 <script type="text/javascript">
 
+		// API Table Link
+		// $.get("/api", function(data) {
+			const data = [
+				{
+					name: "Karen",
+					phoneNum: 123456789,
+					email: "kar1@gmail.com",
+					uniqueid: "123"
+				},
+				{
+					name: "Karen1",
+					phoneNum: 123456789,
+					email: "kar2@gmail.com",
+					uniqueid: "123"
+				},
+				{
+					name: "Karen2",
+					phoneNum: 123456789,
+					email: "kar3@gmail.com",
+					uniqueid: "123"
+				},
+				{
+					name: "Karen3",
+					phoneNum: 123456789,
+					email: "kar4@gmail.com",
+					uniqueid: "123"
+				},
+				{
+					name: "Karen4",
+					phoneNum: 123456789,
+					email: "kar5@gmail.com",
+					uniqueid: "123"
+				},
+				{
+					name: "Karen5",
+					phoneNum: 123456789,
+					email: "kar5@gmail.com",
+					uniqueid: "123"
+				},
+				{
+					name: "Karen6",
+					phoneNum: 123456789,
+					email: "kar6@gmail.com",
+					uniqueid: "123"
+				},				
+			];
+
+			console.log("84 data ", data[0].name);
+			// const waitinglistArr = [];
+
+			for (let i = 0; i < 5; i++) {
+				var tableRSVP = $("<div>");
+				// tableRSVP.addClass("table-order");
+				tableRSVP.attr("id", "table-order-" + i);
+				$("#tableSection").append(tableRSVP);
+				console.log(tableRSVP);
+
+				$("#table-order-" + i).append("<h2> <span class='btn btn-lg btn-danger'>" + (i+1) + "</span> " + data[i].name + "</h2>");
+			}
+
+
+			for (let i = 5; i < data.length; i++) {
+				var tableRSVP = $("<div>");
+				tableRSVP.attr("id", "table-order-" + i);
+				$("#waitlistSection").append(tableRSVP);
+				console.log(tableRSVP);
+
+				$("#table-order-" + i).append("<h2> <span class='btn btn-lg btn-danger'>" + (i+1) + "</span> " + data[i].name + "</h2>");
+			}
+		// });
 
 
 
