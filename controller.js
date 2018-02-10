@@ -5,11 +5,12 @@ const path = require('path');
 
 module.exports = {
 	home(req,res){
-		console.log('test')
-		res.sendFile(path.join(__dirname, "../../index.html"));
+		res.sendFile(path.join(__dirname, "public/index.html"));
 	},
 
-	table(req,res){console.log("hit table");},
+	table(req,res){
+		res.sendFile(path.join(__dirname, "public/view.html"));
+	},
 
 	getReserve(req,res){getReserveapi.getReservations(req, res);},
 	
