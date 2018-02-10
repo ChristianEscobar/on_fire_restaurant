@@ -1,0 +1,19 @@
+{
+  "name": "on_fire_restaurant",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xtiane/on_fire_restaurant.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xtiane/on_fire_restaurant/issues"
+  },
+  "homepage": "https://github.com/xtiane/on_fire_restaurant#readme"
+}
