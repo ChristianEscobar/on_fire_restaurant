@@ -7,6 +7,5 @@ module.exports = (app) => {
 	app.get("/api/table", controller.apiTable);
 	app.get("/api/waitingList", controller.apiWaitingList);
 	app.get("/reserve", controller.getReserve);
-
 	app.post("/api/reserve",controller.postReserve);
 }

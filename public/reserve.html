@@ -80,21 +80,40 @@
 
 	<script type="text/javascript">
 		// to RSVP
-		$('#add-btn').on("click", function(event){
-			event.preventDefault();
+		$('#add-btn').on("click", function(){
+			// event.preventDefault();
 
 			var newRSVP = {
-				name: $("#reserve_name").val().trim(),
-				phoneNum: $("#reserve_phone").val().trim(),
-				email: $("#reserve_email").val().trim(),
-				uniqueid: $("#reserve_uniqueID").val().trim()
+				customerName: $("#reserve_name").val().trim(),
+				customerEmail: $("#reserve_email").val().trim(),
+				customerID: $("#reserve_uniqueID").val().trim(),
+				phoneNumber: $("#reserve_phone").val().trim()
+
 			};
 
-			$.post("/reserve", newRSVP)
-			.done(function() {
-				//console.log(data);
-				alert("Making reserveration...");
+			console.log(newRSVP);
+
+			var currentURL = window.location.origin;
+
+			$.post(currentURL + "/api/reserve", newRSVP, function(data){
+				if(data === true){
+					alert("Yay! You are officially booked!");
+				}
+
+				if(data === false){
+					alert("Sorry you are in the wait list");
+				}
+
+				$("#reserve_name").val("")
+				$("#reserve_email").val("");
+				$("#reserve_uniqueID").val("");
+				$("#reserve_phone").val("");
+
+
 			});
+
+			return false;
+			
 		});
 
 </script>
