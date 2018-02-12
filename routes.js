@@ -8,4 +8,5 @@ module.exports = (app) => {
 	app.get("/api/waitingList", controller.apiWaitingList);
 	app.get("/reserve", controller.getReserve);
 	app.post("/api/reserve",controller.postReserve);
+	app.post("/api/clear", controller.clear);
 }

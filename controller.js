@@ -23,5 +23,16 @@ module.exports = {
 	},
 	getReserve(req,res){getReserveapi.getReservations(req, res);},
 	
-	postReserve(req,res){postReserveapi.postReservations(req,res);}
+	postReserve(req,res){postReserveapi.postReservations(req,res);},
+
+	clear(req, res){
+		var tables = tableapi.getTables();
+		tables = [];
+		var waitList = tableapi.getWaitingList();
+		waitlist = [];
+
+		console.log("rsvp",tableapi.getTables());
+		console.log("waitlist",tableapi.getWaitingList());
+	}
+
 }
