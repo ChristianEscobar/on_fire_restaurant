@@ -53,95 +53,73 @@
 				</div>
 			</div>
 		</div>
-
-
 	    <footer class="footer">
 	      <div class="container">
 	      	<p>Control Panel</p>
 	        <p><a href="#" id="clear">Clear Table</a> | <a href="/api/tables">API Table Link</a> | <a href="/api/waitlist">API Wait List</a></p>
 	      </div>
 	    </footer>
-
 	</div>
-
 </body>
 
 
 <!-- BELOW CODE IS CRITICAL. IT HANDLES HOW FORM DATA IS LOADED FROM OUR SERVER -->
 <script type="text/javascript">
 
-		// API Table Link
-		// $.get("/api", function(data) {
-			const data = [
-				{
-					name: "Karen",
-					phoneNum: 123456789,
-					email: "kar1@gmail.com",
-					uniqueid: "123"
-				},
-				{
-					name: "Karen1",
-					phoneNum: 123456789,
-					email: "kar2@gmail.com",
-					uniqueid: "123"
-				},
-				{
-					name: "Karen2",
-					phoneNum: 123456789,
-					email: "kar3@gmail.com",
-					uniqueid: "123"
-				},
-				{
-					name: "Karen3",
-					phoneNum: 123456789,
-					email: "kar4@gmail.com",
-					uniqueid: "123"
-				},
-				{
-					name: "Karen4",
-					phoneNum: 123456789,
-					email: "kar5@gmail.com",
-					uniqueid: "123"
-				},
-				{
-					name: "Karen5",
-					phoneNum: 123456789,
-					email: "kar5@gmail.com",
-					uniqueid: "123"
-				},
-				{
-					name: "Karen6",
-					phoneNum: 123456789,
-					email: "kar6@gmail.com",
-					uniqueid: "123"
-				},				
-			];
+	function runTableQuery(){
+		var currentURL = window.location.origin;
+		$.ajax({url:currentURL + "/api/table", method:"GET"})
+			.done(function(tableData){
+				console.log("----------------------------");
+				console.log("URL:" + currentURL + "/api/tables");
+				console.log(tableData)
+				console.log("----------------------------");
 
-			console.log("84 data ", data[0].name);
-			// const waitinglistArr = [];
+				for (let i = 0; i < tableData.length; i++) {
+					console.log(tableData[i]);
 
-			for (let i = 0; i < 5; i++) {
-				var tableRSVP = $("<div>");
-				// tableRSVP.addClass("table-order");
-				tableRSVP.attr("id", "table-order-" + i);
-				$("#tableSection").append(tableRSVP);
-				console.log(tableRSVP);
+					var tableRSVP = $("<div>");
+					// tableRSVP.addClass("table-order");
+					tableRSVP.attr("id", "table-order-" + i+1);
+					$("#tableSection").append(tableRSVP);
+					console.log(tableRSVP);
 
-				$("#table-order-" + i).append("<h2> <span class='btn btn-lg btn-danger'>" + (i+1) + "</span> " + data[i].name + "</h2>");
-			}
+					var tableNumber = i + 1;
 
+					$("#table-order-" + i + 1).append("<h2> <span class='btn btn-lg btn-danger'>" + tableNumber + "</span> | " + tableData[i].customerName + "</h2>");
+				}
 
-			for (let i = 5; i < data.length; i++) {
-				var tableRSVP = $("<div>");
-				tableRSVP.attr("id", "table-order-" + i);
-				$("#waitlistSection").append(tableRSVP);
-				console.log(tableRSVP);
+			})
+	}
 
-				$("#table-order-" + i).append("<h2> <span class='btn btn-lg btn-danger'>" + (i+1) + "</span> " + data[i].name + "</h2>");
-			}
-		// });
+	//waiting list
+	function runWaitListQuery(){
+		var currentURL = window.location.origin;
+		$.ajax({url:currentURL + "/api/waitingList", method:"GET"})
+			.done(function(waitListData){
+				console.log("----------------------------");
+				console.log("URL:" + currentURL + "/api/waitingList");
+				console.log(waitListData)
+				console.log("----------------------------");
 
+				for (let i = 0; i < waitListData.length; i++) {
+					console.log(waitListData[i]);
 
+					var waitList = $("<div>");
+					// waitList.addClass("table-order");
+					waitList.attr("id", "wait-order-" + i+1);
+					$("#waitlistSection").append(waitList);
+					console.log(waitList);
+
+					var tableNumber = i + 1;
+
+					$("#wait-order-" + i + 1).append("<h2> <span class='btn btn-lg btn-danger'>" + tableNumber + "</span> | " + waitListData[i].customerName + "</h2>");
+				}
+
+			})
+	}
+	runTableQuery();	
+	runWaitListQuery();
 
 </script>
 </html>
