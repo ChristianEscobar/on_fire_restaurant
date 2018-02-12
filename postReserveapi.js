@@ -1,6 +1,13 @@
 let storage = require("./storage");
+const tableapi = require("./tableapi.js");
 
 exports.postReservations = (req, res) => {
-	//storage.addReservation(req.body);
-	console.log("reservation made!");
+	if(tableapi.getTables().length < 5){
+		tableapi.getTables().push(req.body);
+		res.json(true);
+	}
+	else{
+		tableapi.getWaitingList().push(req.body);
+		res.json(false);	
+	}
 }
